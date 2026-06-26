@@ -1,0 +1,413 @@
+[
+  {
+    "status": "ok",
+    "id_solicitud": "SOL-00001",
+    "resultado": {
+      "id_solicitud": "SOL-00001",
+      "nit_verificado": "900000000",
+      "razon_social_verificada": "Panadería SA",
+      "ciudad_riesgo": "Ibagué",
+      "departamento_verificado": "Tolima",
+      "actividad_economica": "Fabricación de prendas",
+      "numero_empleados_verificado": 29,
+      "antiguedad_empresa": "47 años",
+      "siniestros_ultimos_5_anos": 5,
+      "zona_manzaneo": "D",
+      "clasificacion": "REVISION_ESPECIALISTA",
+      "nivel_riesgo": "ALTO",
+      "inconsistencias": [],
+      "documentos_analizados": [
+        {
+          "nombre_archivo": "Camara_Comercio_SOL-00001.pdf",
+          "tipo_documento": "Camara de Comercio",
+          "campos_extraidos": {
+            "Actividad Economica": "Fabricación de prendas",
+            "Antiguedad": "47 años",
+            "Estado Matricula": "ACTIVA",
+            "NIT": "900000000"
+          }
+        },
+        {
+          "nombre_archivo": "Reporte_Siniestralidad_SOL-00001.pdf",
+          "tipo_documento": "Reporte de Siniestralidad",
+          "campos_extraidos": {
+            "Siniestros": "5",
+            "Ciudad": "Ibagué"
+          }
+        }
+      ],
+      "observacion_agente": "La empresa Panadería SA presenta 5 siniestros en los ultimos 5 anos, lo que eleva el perfil de riesgo a nivel ALTO. Se requiere revision por suscriptor especializado antes de emitir la poliza.",
+      "ruta_recomendada": "Enviar a revision especializada de suscripcion por alta siniestralidad."
+    }
+  },
+  {
+    "status": "ok",
+    "id_solicitud": "SOL-00002",
+    "resultado": {
+      "id_solicitud": "SOL-00002",
+      "nit_verificado": "900000001",
+      "razon_social_verificada": "Panadería LTDA",
+      "ciudad_riesgo": "Tunja",
+      "departamento_verificado": "Boyacá",
+      "actividad_economica": "Educación básica",
+      "numero_empleados_verificado": 69,
+      "antiguedad_empresa": null,
+      "siniestros_ultimos_5_anos": null,
+      "zona_manzaneo": "D",
+      "clasificacion": "INCOMPLETA",
+      "nivel_riesgo": "MEDIO",
+      "inconsistencias": [],
+      "documentos_analizados": [
+        {
+          "nombre_archivo": "Formulario_Vinculacion_SOL-00002.pdf",
+          "tipo_documento": "Formulario de Vinculacion",
+          "campos_extraidos": {
+            "Actividad Economica": "Educación básica",
+            "Numero de Empleados": "69",
+            "NIT": "900000001",
+            "Ciudad": "Tunja"
+          }
+        },
+        {
+          "nombre_archivo": "Plantilla_PILA_SOL-00002.pdf",
+          "tipo_documento": "Planilla PILA",
+          "campos_extraidos": {
+            "Numero de Empleados": "69",
+            "Ciudad": "Tunja"
+          }
+        }
+      ],
+      "observacion_agente": "La solicitud de Panadería LTDA presenta informacion completa y consistente entre el formulario y los documentos de soporte. Puede avanzar directamente al siguiente paso del flujo de emision.",
+      "ruta_recomendada": "Aprobar para emision directa de poliza Multirriesgo PYME."
+    }
+  },
+  {
+    "status": "ok",
+    "id_solicitud": "SOL-00003",
+    "resultado": {
+      "id_solicitud": "SOL-00003",
+      "nit_verificado": "900000002",
+      "razon_social_verificada": "Soluciones SA",
+      "ciudad_riesgo": "Cali",
+      "departamento_verificado": "Valle del Cauca",
+      "actividad_economica": "Servicios médicos",
+      "numero_empleados_verificado": 23,
+      "antiguedad_empresa": "50 años",
+      "siniestros_ultimos_5_anos": 5,
+      "zona_manzaneo": "D",
+      "clasificacion": "REVISION_ESPECIALISTA",
+      "nivel_riesgo": "ALTO",
+      "inconsistencias": [],
+      "documentos_analizados": [
+        {
+          "nombre_archivo": "Camara_Comercio_SOL-00003.pdf",
+          "tipo_documento": "Camara de Comercio",
+          "campos_extraidos": {
+            "Actividad Economica": "Servicios médicos",
+            "Antiguedad": "50 años",
+            "Estado Matricula": "ACTIVA",
+            "NIT": "900000002"
+          }
+        },
+        {
+          "nombre_archivo": "Reporte_Siniestralidad_SOL-00003.pdf",
+          "tipo_documento": "Reporte de Siniestralidad",
+          "campos_extraidos": {
+            "Siniestros": "5",
+            "Ciudad": "Cali"
+          }
+        }
+      ],
+      "observacion_agente": "La empresa Soluciones SA presenta 5 siniestros en los ultimos 5 anos, lo que eleva el perfil de riesgo a nivel ALTO. Se requiere revision por suscriptor especializado antes de emitir la poliza.",
+      "ruta_recomendada": "Enviar a revision especializada de suscripcion por alta siniestralidad."
+    }
+  },
+  {
+    "status": "ok",
+    "id_solicitud": "SOL-00004",
+    "resultado": {
+      "id_solicitud": "SOL-00004",
+      "nit_verificado": "900000003",
+      "razon_social_verificada": "Soluciones LTDA",
+      "ciudad_riesgo": "Medellín",
+      "departamento_verificado": "Antioquia",
+      "actividad_economica": "Construcción de viviendas",
+      "numero_empleados_verificado": 79,
+      "antiguedad_empresa": null,
+      "siniestros_ultimos_5_anos": null,
+      "zona_manzaneo": "A",
+      "clasificacion": "INCOMPLETA",
+      "nivel_riesgo": "MEDIO",
+      "inconsistencias": [],
+      "documentos_analizados": [
+        {
+          "nombre_archivo": "Formulario_Vinculacion_SOL-00004.pdf",
+          "tipo_documento": "Formulario de Vinculacion",
+          "campos_extraidos": {
+            "Actividad Economica": "Construcción de viviendas",
+            "Numero de Empleados": "79",
+            "NIT": "900000003",
+            "Ciudad": "Medellín"
+          }
+        },
+        {
+          "nombre_archivo": "Plantilla_PILA_SOL-00004.pdf",
+          "tipo_documento": "Planilla PILA",
+          "campos_extraidos": {
+            "Numero de Empleados": "79",
+            "Ciudad": "Medellín"
+          }
+        }
+      ],
+      "observacion_agente": "La solicitud de Soluciones LTDA presenta informacion completa y consistente entre el formulario y los documentos de soporte. Puede avanzar directamente al siguiente paso del flujo de emision.",
+      "ruta_recomendada": "Aprobar para emision directa de poliza Multirriesgo PYME."
+    }
+  },
+  {
+    "status": "ok",
+    "id_solicitud": "SOL-00005",
+    "resultado": {
+      "id_solicitud": "SOL-00005",
+      "nit_verificado": "900000004",
+      "razon_social_verificada": "Comercializadora LTDA",
+      "ciudad_riesgo": "Cartagena",
+      "departamento_verificado": "Bolívar",
+      "actividad_economica": "Transporte de carga",
+      "numero_empleados_verificado": 37,
+      "antiguedad_empresa": "12 años",
+      "siniestros_ultimos_5_anos": 5,
+      "zona_manzaneo": "A",
+      "clasificacion": "REVISION_ESPECIALISTA",
+      "nivel_riesgo": "ALTO",
+      "inconsistencias": [],
+      "documentos_analizados": [
+        {
+          "nombre_archivo": "Camara_Comercio_SOL-00005.pdf",
+          "tipo_documento": "Camara de Comercio",
+          "campos_extraidos": {
+            "Actividad Economica": "Transporte de carga",
+            "Antiguedad": "12 años",
+            "Estado Matricula": "ACTIVA",
+            "NIT": "900000004"
+          }
+        },
+        {
+          "nombre_archivo": "Reporte_Siniestralidad_SOL-00005.pdf",
+          "tipo_documento": "Reporte de Siniestralidad",
+          "campos_extraidos": {
+            "Siniestros": "5",
+            "Ciudad": "Cartagena"
+          }
+        }
+      ],
+      "observacion_agente": "La empresa Comercializadora LTDA presenta 5 siniestros en los ultimos 5 anos, lo que eleva el perfil de riesgo a nivel ALTO. Se requiere revision por suscriptor especializado antes de emitir la poliza.",
+      "ruta_recomendada": "Enviar a revision especializada de suscripcion por alta siniestralidad."
+    }
+  },
+  {
+    "status": "ok",
+    "id_solicitud": "SOL-00006",
+    "resultado": {
+      "id_solicitud": "SOL-00006",
+      "nit_verificado": "900000005",
+      "razon_social_verificada": "Servicios SA",
+      "ciudad_riesgo": "Cartagena",
+      "departamento_verificado": "Bolívar",
+      "actividad_economica": "Educación básica",
+      "numero_empleados_verificado": 51,
+      "antiguedad_empresa": null,
+      "siniestros_ultimos_5_anos": null,
+      "zona_manzaneo": "D",
+      "clasificacion": "INCOMPLETA",
+      "nivel_riesgo": "MEDIO",
+      "inconsistencias": [],
+      "documentos_analizados": [
+        {
+          "nombre_archivo": "Formulario_Vinculacion_SOL-00006.pdf",
+          "tipo_documento": "Formulario de Vinculacion",
+          "campos_extraidos": {
+            "Actividad Economica": "Educación básica",
+            "Numero de Empleados": "51",
+            "NIT": "900000005",
+            "Ciudad": "Cartagena"
+          }
+        },
+        {
+          "nombre_archivo": "Plantilla_PILA_SOL-00006.pdf",
+          "tipo_documento": "Planilla PILA",
+          "campos_extraidos": {
+            "Numero de Empleados": "51",
+            "Ciudad": "Cartagena"
+          }
+        }
+      ],
+      "observacion_agente": "La solicitud de Servicios SA presenta informacion completa y consistente entre el formulario y los documentos de soporte. Puede avanzar directamente al siguiente paso del flujo de emision.",
+      "ruta_recomendada": "Aprobar para emision directa de poliza Multirriesgo PYME."
+    }
+  },
+  {
+    "status": "ok",
+    "id_solicitud": "SOL-00007",
+    "resultado": {
+      "id_solicitud": "SOL-00007",
+      "nit_verificado": "900000006",
+      "razon_social_verificada": "Supermercado SAS",
+      "ciudad_riesgo": "Sincelejo",
+      "departamento_verificado": "Sucre",
+      "actividad_economica": "Construcción de viviendas",
+      "numero_empleados_verificado": 41,
+      "antiguedad_empresa": "4 años",
+      "siniestros_ultimos_5_anos": 5,
+      "zona_manzaneo": "D",
+      "clasificacion": "REVISION_ESPECIALISTA",
+      "nivel_riesgo": "ALTO",
+      "inconsistencias": [],
+      "documentos_analizados": [
+        {
+          "nombre_archivo": "Camara_Comercio_SOL-00007.pdf",
+          "tipo_documento": "Camara de Comercio",
+          "campos_extraidos": {
+            "Actividad Economica": "Construcción de viviendas",
+            "Antiguedad": "4 años",
+            "Estado Matricula": "ACTIVA",
+            "NIT": "900000006"
+          }
+        },
+        {
+          "nombre_archivo": "Reporte_Siniestralidad_SOL-00007.pdf",
+          "tipo_documento": "Reporte de Siniestralidad",
+          "campos_extraidos": {
+            "Siniestros": "5",
+            "Ciudad": "Sincelejo"
+          }
+        }
+      ],
+      "observacion_agente": "La empresa Supermercado SAS presenta 5 siniestros en los ultimos 5 anos, lo que eleva el perfil de riesgo a nivel ALTO. Se requiere revision por suscriptor especializado antes de emitir la poliza.",
+      "ruta_recomendada": "Enviar a revision especializada de suscripcion por alta siniestralidad."
+    }
+  },
+  {
+    "status": "ok",
+    "id_solicitud": "SOL-00008",
+    "resultado": {
+      "id_solicitud": "SOL-00008",
+      "nit_verificado": "900000007",
+      "razon_social_verificada": "Panadería LTDA",
+      "ciudad_riesgo": "Barranquilla",
+      "departamento_verificado": "Atlántico",
+      "actividad_economica": "Servicios médicos",
+      "numero_empleados_verificado": 46,
+      "antiguedad_empresa": "23 años",
+      "siniestros_ultimos_5_anos": 5,
+      "zona_manzaneo": "B",
+      "clasificacion": "REVISION_ESPECIALISTA",
+      "nivel_riesgo": "ALTO",
+      "inconsistencias": [],
+      "documentos_analizados": [
+        {
+          "nombre_archivo": "Camara_Comercio_SOL-00008.pdf",
+          "tipo_documento": "Camara de Comercio",
+          "campos_extraidos": {
+            "Actividad Economica": "Servicios médicos",
+            "Antiguedad": "23 años",
+            "Estado Matricula": "ACTIVA",
+            "NIT": "900000007"
+          }
+        },
+        {
+          "nombre_archivo": "Reporte_Siniestralidad_SOL-00008.pdf",
+          "tipo_documento": "Reporte de Siniestralidad",
+          "campos_extraidos": {
+            "Siniestros": "5",
+            "Ciudad": "Barranquilla"
+          }
+        }
+      ],
+      "observacion_agente": "La empresa Panadería LTDA presenta 5 siniestros en los ultimos 5 anos, lo que eleva el perfil de riesgo a nivel ALTO. Se requiere revision por suscriptor especializado antes de emitir la poliza.",
+      "ruta_recomendada": "Enviar a revision especializada de suscripcion por alta siniestralidad."
+    }
+  },
+  {
+    "status": "ok",
+    "id_solicitud": "SOL-00009",
+    "resultado": {
+      "id_solicitud": "SOL-00009",
+      "nit_verificado": "900000008",
+      "razon_social_verificada": "Comercializadora SA",
+      "ciudad_riesgo": "Pereira",
+      "departamento_verificado": "Risaralda",
+      "actividad_economica": "Educación básica",
+      "numero_empleados_verificado": 56,
+      "antiguedad_empresa": null,
+      "siniestros_ultimos_5_anos": null,
+      "zona_manzaneo": "B",
+      "clasificacion": "INCOMPLETA",
+      "nivel_riesgo": "MEDIO",
+      "inconsistencias": [],
+      "documentos_analizados": [
+        {
+          "nombre_archivo": "Formulario_Vinculacion_SOL-00009.pdf",
+          "tipo_documento": "Formulario de Vinculacion",
+          "campos_extraidos": {
+            "Actividad Economica": "Educación básica",
+            "Numero de Empleados": "56",
+            "NIT": "900000008",
+            "Ciudad": "Pereira"
+          }
+        },
+        {
+          "nombre_archivo": "Plantilla_PILA_SOL-00009.pdf",
+          "tipo_documento": "Planilla PILA",
+          "campos_extraidos": {
+            "Numero de Empleados": "56",
+            "Ciudad": "Pereira"
+          }
+        }
+      ],
+      "observacion_agente": "La solicitud de Comercializadora SA presenta informacion completa y consistente entre el formulario y los documentos de soporte. Puede avanzar directamente al siguiente paso del flujo de emision.",
+      "ruta_recomendada": "Aprobar para emision directa de poliza Multirriesgo PYME."
+    }
+  },
+  {
+    "status": "ok",
+    "id_solicitud": "SOL-00010",
+    "resultado": {
+      "id_solicitud": "SOL-00010",
+      "nit_verificado": "800987654",
+      "razon_social_verificada": "Tecnologías e Innovaciones de Colombia SAS",
+      "ciudad_riesgo": "Bogotá",
+      "departamento_verificado": "Bogotá D.C.",
+      "actividad_economica": "6201 — Actividades de desarrollo de sistemas informáticos",
+      "numero_empleados_verificado": 25,
+      "antiguedad_empresa": null,
+      "siniestros_ultimos_5_anos": null,
+      "zona_manzaneo": "A",
+      "clasificacion": "INCOMPLETA",
+      "nivel_riesgo": "MEDIO",
+      "inconsistencias": [],
+      "documentos_analizados": [
+        {
+          "nombre_archivo": "Camara_Comercio_SOL-00010.pdf",
+          "tipo_documento": "Camara de Comercio",
+          "campos_extraidos": {
+            "Actividad Economica": "CIIU 6201 — Desarrollo de software y consultoría informática",
+            "Numero de Empleados": "25",
+            "Estado Matricula": "ACTIVA",
+            "NIT": "800.987.654-3",
+            "Ciudad": "Bogotá D.C."
+          }
+        },
+        {
+          "nombre_archivo": "RUT_SOL-00010.pdf",
+          "tipo_documento": "RUT",
+          "campos_extraidos": {
+            "Actividad Economica": "6201 — Actividades de desarrollo de sistemas informáticos",
+            "NIT": "800.987.654-3"
+          }
+        }
+      ],
+      "observacion_agente": "La solicitud de Tecnologías e Innovaciones de Colombia SAS presenta informacion completa y consistente entre el formulario y los documentos de soporte. Puede avanzar directamente al siguiente paso del flujo de emision.",
+      "ruta_recomendada": "Aprobar para emision directa de poliza Multirriesgo PYME."
+    }
+  }
+]

@@ -1,0 +1,24 @@
+# Entorno virtual
+venv/
+.venv/
+env/
+
+# Variables de entorno con credenciales reales
+.env
+
+# Cache de Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Soportes del cliente (archivos pesados, datos sensibles)
+data/soportes/
+data/*.zip
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
