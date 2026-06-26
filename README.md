@@ -7,26 +7,27 @@ Sistema de automatización inteligente para el análisis inicial de solicitudes 
 ## Arquitectura
 
 ```
-CSV / Excel ──┐
-              ├─► FastAPI ──► Orquestador ──► PyMuPDF (extracción PDF)
-ZIP / PDFs ───┘                           └──► Groq LLM (análisis + clasificación)
-                                                        │
-                                                        ▼
-                                               JSON estructurado
+Excel / CSV ──┐
+              ├──► FastAPI ──► Orquestador ──► PyMuPDF (extracción PDF)
+ZIP / PDFs ───┘                            └──► Claude (análisis + clasificación)
+                                                         │
+                                                         ▼
+                                                JSON estructurado
 ```
 
-**Stack:**
-- **FastAPI** — API REST con documentación automática (Swagger/OpenAPI)
-- **PyMuPDF** — extracción de texto nativo de PDFs sin OCR
-- **Groq** (`llama3-8b-8192`) — análisis semántico, extracción de campos y clasificación
-- **openpyxl** — lectura del Excel de solicitudes
+Stack:
+
+- FastAPI — API REST con documentación automática en /docs
+- PyMuPDF — extracción de texto nativo de PDFs sin OCR
+- Claude claude-haiku-4-5 (Anthropic) — análisis semántico, extracción de campos y clasificación
+- openpyxl — lectura del Excel de solicitudes
 
 ---
 
 ## Requisitos
 
 - Python 3.10+
-- API Key de Groq (gratuita en [console.groq.com](https://console.groq.com))
+- API Key de Anthropic (console.anthropic.com)
 
 ---
 
@@ -34,7 +35,7 @@ ZIP / PDFs ───┘                           └──► Groq LLM (anális
 
 ```bash
 # 1. Clonar el repositorio
-git clone <url-del-repo>
+git clone https://github.com/eduartorres/pymes-agent-mvp.git
 cd pymes_agent
 
 # 2. Crear entorno virtual
@@ -45,9 +46,13 @@ venv\Scripts\activate           # Windows
 # 3. Instalar dependencias
 pip install -r requirements.txt
 
-# 4. Configurar API Key de Groq
-export GROQ_API_KEY="gsk_..."   # Linux / Mac
-set GROQ_API_KEY=gsk_...        # Windows CMD
+# 4. Configurar la variable de entorno con la API Key
+cp .env.example .env
+# Editar .env y reemplazar el valor de ANTHROPIC_API_KEY
+
+# 5. Exportar la variable antes de ejecutar
+export ANTHROPIC_API_KEY="sk-ant-..."   # Linux / Mac
+set ANTHROPIC_API_KEY=sk-ant-...        # Windows CMD
 ```
 
 ---
@@ -58,7 +63,7 @@ Coloca los archivos en la carpeta `data/`:
 
 ```
 data/
-├── solicitudes.xlsx          # Excel con las 100 solicitudes
+├── solicitudes.xlsx
 └── soportes/
     ├── SOL-00001/
     │   ├── Camara_Comercio_SOL-00001.pdf
@@ -68,7 +73,8 @@ data/
     └── ...
 ```
 
-Si tienes el ZIP, extráelo directamente en `data/`:
+Si tienes el ZIP de soportes, extráelo directamente en `data/`:
+
 ```bash
 unzip soportes.zip -d data/
 ```
@@ -80,21 +86,20 @@ unzip soportes.zip -d data/
 ### Iniciar la API
 
 ```bash
-cd pymes_agent
 uvicorn app.main:app --reload --port 8000
 ```
 
-La API queda disponible en `http://localhost:8000`.
-Documentación interactiva: `http://localhost:8000/docs`
+La API queda disponible en http://localhost:8000.
+Documentación interactiva: http://localhost:8000/docs
 
 ### Endpoints disponibles
 
 | Método | Endpoint | Descripción |
 |--------|----------|-------------|
-| `GET` | `/` | Estado del servicio |
-| `GET` | `/api/v1/solicitudes?limite=20` | Lista solicitudes del Excel |
-| `POST` | `/api/v1/analizar/{id_solicitud}` | Analiza una solicitud por ID |
-| `POST` | `/api/v1/batch?inicio=1&fin=10` | Procesa un rango en batch |
+| GET | / | Estado del servicio |
+| GET | /api/v1/solicitudes?limite=20 | Lista solicitudes del Excel |
+| POST | /api/v1/analizar/{id_solicitud} | Analiza una solicitud por ID |
+| POST | /api/v1/batch?inicio=1&fin=10 | Procesa un rango en batch |
 
 ### Ejemplos con curl
 
@@ -105,7 +110,7 @@ curl http://localhost:8000/api/v1/solicitudes?limite=5
 # Analizar una solicitud individual
 curl -X POST http://localhost:8000/api/v1/analizar/SOL-00001
 
-# Procesar batch (primeras 10)
+# Procesar batch de las primeras 10 solicitudes
 curl -X POST "http://localhost:8000/api/v1/batch?inicio=1&fin=10"
 ```
 
@@ -114,11 +119,10 @@ curl -X POST "http://localhost:8000/api/v1/batch?inicio=1&fin=10"
 ## Prueba batch por consola
 
 ```bash
-cd pymes_agent
 python tests/prueba_batch.py
 ```
 
-Procesa las 10 primeras solicitudes y guarda el JSON en `outputs/resultados_batch.json`.
+Procesa las 10 primeras solicitudes y guarda el resultado en `outputs/resultados_batch.json`.
 
 ---
 
@@ -141,17 +145,18 @@ Procesa las 10 primeras solicitudes y guarda el JSON en `outputs/resultados_batc
     "clasificacion": "REVISION_ESPECIALISTA",
     "nivel_riesgo": "ALTO",
     "inconsistencias": [],
-    "documentos_analizados": [...],
+    "documentos_analizados": [],
     "observacion_agente": "...",
     "ruta_recomendada": "..."
   }
 }
 ```
 
-**Clasificaciones posibles:**
-- `APROBACION_DIRECTA` — información completa y consistente, riesgo bajo o medio
-- `REVISION_ESPECIALISTA` — inconsistencias detectadas, alto siniestro o zona de riesgo
-- `INCOMPLETA` — faltan documentos o información mínima
+Clasificaciones posibles:
+
+- APROBACION_DIRECTA: información completa y consistente, riesgo bajo o medio
+- REVISION_ESPECIALISTA: inconsistencias detectadas, alto siniestro o zona de riesgo elevado
+- INCOMPLETA: faltan documentos o información mínima para evaluar el caso
 
 ---
 
@@ -164,20 +169,22 @@ pymes_agent/
 │   ├── routers/
 │   │   └── analisis.py          # Endpoints REST
 │   ├── services/
-│   │   ├── loader.py            # Lectura del Excel
-│   │   ├── extractor.py         # Extracción de texto PDF (PyMuPDF)
-│   │   ├── agente.py            # Integración Groq LLM
-│   │   └── orquestador.py       # Pipeline completo
+│   │   ├── loader.py            # Lectura y normalización del Excel
+│   │   ├── extractor.py         # Extracción de texto PDF con PyMuPDF
+│   │   ├── agente.py            # Integración con Claude (Anthropic)
+│   │   └── orquestador.py       # Pipeline completo de análisis
 │   └── models/
-│       └── schemas.py           # Modelos Pydantic
+│       └── schemas.py           # Modelos Pydantic de entrada y salida
 ├── data/
-│   ├── solicitudes.xlsx
-│   └── soportes/
+│   └── solicitudes.xlsx
 ├── outputs/
-│   └── resultados_batch.json    # Generado por prueba_batch.py
+│   └── resultados_batch.json
 ├── tests/
 │   └── prueba_batch.py
+├── arquitectura.md
+├── resumen_ejecutivo.md
 ├── requirements.txt
+├── .env.example
 └── README.md
 ```
 
@@ -185,14 +192,14 @@ pymes_agent/
 
 ## Decisiones de diseño
 
-### ¿Por qué Groq + llama3-8b-8192?
-Modelo de uso gratuito con capacidad suficiente para extracción de entidades y clasificación de documentos cortos. Latencia baja (~1-2 segundos por solicitud) y sin costo operativo para un MVP.
+**Por qué Claude de Anthropic para el análisis**
+El caso requiere extracción de entidades de documentos con estructura variada y detección de inconsistencias entre fuentes. Claude maneja bien esa tarea con un prompt bien definido y produce JSON estructurado de forma consistente, lo que simplifica el parsing en el pipeline.
 
-### ¿Por qué PyMuPDF?
-Los PDFs de soporte tienen capa de texto nativa, lo que hace innecesario OCR pesado. PyMuPDF extrae texto en milisegundos con una sola dependencia.
+**Por qué PyMuPDF**
+Los documentos de soporte tienen capa de texto nativa, lo que hace innecesario OCR. PyMuPDF extrae el contenido en milisegundos con una sola dependencia y sin servicios externos.
 
-### ¿Por qué no guardar en base de datos?
-Para MVP de demostración, el JSON en disco es suficiente y elimina dependencias adicionales. En producción se agregaría PostgreSQL o DynamoDB.
+**Por qué no base de datos**
+Para un MVP de demostración el JSON en disco es suficiente y elimina dependencias de infraestructura. En producción se integraría con la base de datos de gestión de solicitudes existente.
 
-### Detección de inconsistencias
-El agente compara los valores del formulario CSV contra los datos extraídos de los PDFs. Casos como SOL-00045 (ciudad declarada Medellín pero riesgo real en Bogotá) son detectados automáticamente por el LLM al leer la observación del asesor y los documentos.
+**Detección de inconsistencias**
+El agente cruza los valores del formulario contra los datos extraídos de los PDFs. Casos como una ciudad declarada incorrectamente en el formulario pero corregida en la observación del asesor son detectados automáticamente porque el modelo lee todas las fuentes en un mismo contexto.
